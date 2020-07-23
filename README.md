@@ -1,25 +1,10 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+## blog_app
 
 * Ruby version
 
-* System dependencies
+    2.6.6
 
-* Configuration
+* Rails version
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# blog_app
+    5.2.3
