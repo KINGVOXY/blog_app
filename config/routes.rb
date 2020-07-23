@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
   root 'home#top' # topページ
   get '/about' => 'home#about' # 自己紹介
 
