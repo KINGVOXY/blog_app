@@ -1,36 +1,36 @@
 <h1>blogs</h1>
 
-<% if logged_in? %>
+<% if logged_in? %> <!-- ログイン済みの時 -->
     <%= link_to("/blogs/new",{method:"get"}) do %>
-        <input type="submit" value="New Post">
+        <input type="submit" value="New Post"> <!-- 記事投稿 -->
     <% end %>  
     <%= link_to(logout_path, {method:"delete"}) do %>
-        <input type="submit" value="Logout">
+        <input type="submit" value="Logout"> <!-- ログアウト -->
     <% end %>
-<% else %>
-    <%= link_to(login_path, {method:"get"}) do %>
-        <input type="submit" value="Login">
+<% else %> <!-- 未ログインの時 -->
+    <%= link_to(login_path, {method:"get"}) do %> 
+        <input type="submit" value="Login"> <!-- ログイン -->
     <% end %>
 <% end %>
 
-<% @articles.each do |article| %>
+<% @articles.each do |article| %> <!-- 記事を一つずつ取得 -->
     <ul>
         <li>
-            <%= article.title %>
+            <%= article.title %> <!-- タイトル -->
 
-            <p><%= time_ago_in_words(article.created_at) %> ago</p>
+            <p><%= time_ago_in_words(article.created_at) %> ago</p> <!-- どれくらい前に更新されたか -->
 
-            <% unless article.image == "" %>
-                <img src="<%= article.image %>">
+            <% unless article.image == "" %> <!-- 画像リンクがあるとき -->
+                <img src="<%= article.image %>"> <!-- 画像 -->
             <% end %>
 
-            <p><%= article.content %></p>
+            <p><%= article.content %></p> <!-- 本文 -->
 
-            <p><%= article.created_at.strftime("%Y-%m-%d %H:%M JST") %></p>
+            <p><%= article.created_at.strftime("%Y-%m-%d %H:%M JST") %></p> <!-- 更新日時 -->
         </li>
-            <% if logged_in? %>
+            <% if logged_in? %> <!-- ログイン済みの時 -->
                 <%= link_to("/blogs/#{article.id}/destroy",{method:"delete"}) do %>
-                    <input type="submit" value="delete">
+                    <input type="submit" value="delete"> <!-- 記事削除 -->
                 <% end %>
             <% end %>
 

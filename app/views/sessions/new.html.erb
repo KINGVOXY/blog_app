@@ -1,13 +1,13 @@
 <h1>login</h1>
 
-<%= form_for(:session, url: login_path) do |f| %>
+<%= form_for(:session, url: login_path) do |f| %> <!-- ログインフォーム -->
 
 <p>Email</p>
-<%= f.email_field :email, placeholder: 'Email' %>
+<%= f.email_field :email, placeholder: 'Email' %> <!-- email入力 -->
 
 <p>Password</p>
-<%= f.password_field :password, placeholder: 'Password' %>
+<%= f.password_field :password, placeholder: 'Password' %> <!-- password入力 -->
 
 
-<p><%= f.submit "Log in", class:'button' %></p>
+<p><%= f.submit "Log in", class:'button' %></p> <!-- ログインボタン -->
 <% end %>
