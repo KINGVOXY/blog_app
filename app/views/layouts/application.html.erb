@@ -9,6 +9,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <%= link_to("/",{method:"get"}) do %>
+      <p>topへ</p>
+    <% end %>
+    <%= link_to("/about",{method:"get"}) do %>
+      <p>aboutへ</p>
+    <% end %>
+    <%= link_to("/blogs",{method:"get"}) do %>
+      <p>blogsへ</p>
+    <% end %>
+  </header>
+
   <body>
     <%= yield %>
   </body>
