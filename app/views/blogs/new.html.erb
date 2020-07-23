@@ -1,0 +1,14 @@
+<%= form_tag('/complete', method: :post) do %>
+
+    <p>Title</p>
+    <input type="text" name="title" placeholder="Title">
+
+    <p>Image URL</p>
+    <input type="text" name="image" placeholder="Image Url">
+    
+    <p>Contents</p>
+    <textarea class="cp_textarea" type="text" name="content" placeholder="Write here" rows="10" cols="50"></textarea>
+    
+    <input type="submit" value="Post" class="button">
+    
+  <% end %>

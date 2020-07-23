@@ -1,2 +1,40 @@
-<h1>Blogs#index</h1>
-<p>Find me in app/views/blogs/index.html.erb</p>
+<!--
+<% if logged_in? %>
+    <%= link_to("/new",{method:"get"}) do %>
+        <input type="submit" value="New Post">
+    <% end %>  
+    <%= link_to(logout_path, {method:"delete"}) do %>
+        <input type="submit" value="Logout">
+    <% end %>
+<% else %>
+    <%= link_to(login_path, {method:"get"}) do %>
+        <input type="submit" value="Login">
+    <% end %>
+<% end %>
+-->
+
+<% @articles.each do |article| %>
+    <ul class="blogs">
+        <li>
+            <%= article.title %>
+
+            <p><%= time_ago_in_words(article.created_at) %> ago</p>
+
+            <% unless article.image == "" %>
+                <img src="<%= article.image %>">
+            <% end %>
+
+            <p><%= article.content %></p>
+
+            <p><%= article.created_at.strftime("%Y-%m-%d %H:%M JST") %></p>
+        </li>
+<!--
+            <% if logged_in? %>
+                <%= link_to("/blog/#{article.id}/destroy",{method:"delete"}) do %>
+                    <input type="submit" value="delete">
+                <% end %>
+            <% end %>
+-->
+
+    </ul>
+<% end %>
