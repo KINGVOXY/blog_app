@@ -1,6 +1,7 @@
-<!--
+<h1>blogs</h1>
+
 <% if logged_in? %>
-    <%= link_to("/new",{method:"get"}) do %>
+    <%= link_to("/blogs/new",{method:"get"}) do %>
         <input type="submit" value="New Post">
     <% end %>  
     <%= link_to(logout_path, {method:"delete"}) do %>
@@ -11,10 +12,9 @@
         <input type="submit" value="Login">
     <% end %>
 <% end %>
--->
 
 <% @articles.each do |article| %>
-    <ul class="blogs">
+    <ul>
         <li>
             <%= article.title %>
 
@@ -28,13 +28,11 @@
 
             <p><%= article.created_at.strftime("%Y-%m-%d %H:%M JST") %></p>
         </li>
-<!--
             <% if logged_in? %>
-                <%= link_to("/blog/#{article.id}/destroy",{method:"delete"}) do %>
+                <%= link_to("/blogs/#{article.id}/destroy",{method:"delete"}) do %>
                     <input type="submit" value="delete">
                 <% end %>
             <% end %>
--->
 
     </ul>
 <% end %>
