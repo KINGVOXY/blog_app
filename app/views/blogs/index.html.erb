@@ -16,12 +16,14 @@
 <% @articles.each do |article| %> <!-- 記事を一つずつ取得 -->
     <ul>
         <li>
-            <%= article.title %> <!-- タイトル -->
+            <%= link_to("/blogs/#{article.id}/status",{method:"get"}) do %> <!-- 本文ページへ -->
+                    <%= article.title %> <!-- タイトル -->
+            <% end %>
 
             <p><%= time_ago_in_words(article.updated_at) %> ago</p> <!-- どれくらい前に更新されたか -->
 
             <% unless article.image == "" %> <!-- 画像リンクがあるとき -->
-                <img src="<%= article.image %>"> <!-- 画像 -->
+                <img src="<%= article.image %>" style="max-width:20vw;min-width:10vw;"> <!-- 画像 -->
             <% end %>
 
             <p><%= article.content %></p> <!-- 本文 -->
@@ -35,9 +37,8 @@
                     <input type="submit" value="delete"> <!-- 記事削除 -->
                 <% end %>
                 <%= link_to("/blogs/#{article.id}/edit",{method:"get"}) do %>
-                    <input type="submit" value="edit"> <!-- 記事削除 -->
+                    <input type="submit" value="edit"> <!-- 記事編集 -->
                 <% end %>
             <% end %>
-
     </ul>
 <% end %>
