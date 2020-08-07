@@ -15,6 +15,18 @@ class BlogsController < ApplicationController
     redirect_to '/blogs' # ブログ画面にリダイレクト
   end
 
+  def edit
+    @article = Article.find_by(id: params[:id]) # 同じidの記事を探して代入
+  end
+
+  def update
+    @article = Article.find_by(id: params[:id]) # 同じidの記事を探して代入
+    @article.update_attribute(:title, params[:title])
+    @article.update_attribute(:image, params[:image])
+    @article.update_attribute(:content, params[:content])
+    redirect_to '/blogs'
+  end
+
   def destroy
     @article = Article.find_by(id: params[:id]) # 同じidの記事を探して代入
     @article.destroy # 代入したオブジェクトを消す
