@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/about' => 'home#about' # 自己紹介
 
   get '/blogs' => 'blogs#index' # 投稿一覧
+  get '/blogs/:id/status' => 'blogs#status' # 投稿詳細表示
+
   get '/blogs/new' => 'blogs#new' # 記事投稿
   post '/blogs/complete' => 'blogs#create' # 投稿完了処理
 
