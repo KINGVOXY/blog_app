@@ -1,0 +1,35 @@
+
+<% if logged_in? %> <!-- ログイン済みの時 -->
+    <%= link_to("/blogs/new",{method:"get"}) do %>
+        <input type="submit" value="New Post"> <!-- 記事投稿 -->
+    <% end %>  
+    <%= link_to(logout_path, {method:"delete"}) do %>
+        <input type="submit" value="Logout"> <!-- ログアウト -->
+    <% end %>
+<% else %> <!-- 未ログインの時 -->
+    <%= link_to(login_path, {method:"get"}) do %> 
+        <input type="submit" value="Login"> <!-- ログイン -->
+    <% end %>
+<% end %>
+
+<h1 style="font-size:40px;"><%= @article.title %></h1>
+<p><%= time_ago_in_words(@article.updated_at) %> ago</p> <!-- どれくらい前に更新されたか -->
+
+<% unless @article.image == "" %> <!-- 画像リンクがあるとき -->
+    <div style="text-align:center;"><img src="<%= @article.image %>" style="max-width:35vw;min-width:25vw"></div> <!-- 画像 -->
+<% end %>
+
+<p><h3 style="text-align:center"><%= @article.content %></h3></p> <!-- 本文 -->
+<% if @article.updated_at != @article.created_at %>
+    <h5  style="text-align:center;"><p><%= @article.updated_at.strftime("%Y年%m月%d日 %H時%M分 更新") %></p></h5> <!-- 更新したとき、その日時も表示 -->
+<% end %>
+<h5  style="text-align:center;"><p><%= @article.created_at.strftime("%Y年%m月%d日 %H時%M分 作成") %></p></h5> <!-- 作成日時 -->
+
+<% if logged_in? %> <!-- ログイン済みの時 -->
+    <%= link_to("/blogs/#{@article.id}/destroy",{method:"delete"}) do %>
+        <input type="submit" value="delete"> <!-- 記事削除 -->
+    <% end %>
+    <%= link_to("/blogs/#{@article.id}/edit",{method:"get"}) do %>
+        <input type="submit" value="edit"> <!-- 記事編集 -->
+    <% end %>
+<% end %>
