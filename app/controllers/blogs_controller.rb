@@ -21,9 +21,9 @@ class BlogsController < ApplicationController
 
   def update
     @article = Article.find_by(id: params[:id]) # 同じidの記事を探して代入
-    @article.update_attribute(:title, params[:title])
-    @article.update_attribute(:image, params[:image])
-    @article.update_attribute(:content, params[:content])
+    @article.update_attribute(:title, params[:title]) # タイトルをアップデート
+    @article.update_attribute(:image, params[:image]) # 画像URLをアップデート
+    @article.update_attribute(:content, params[:content]) # 本文をアップデート
     redirect_to '/blogs'
   end
 
