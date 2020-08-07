@@ -1,0 +1,20 @@
+<h1>edit page</h1>
+
+<%= form_tag("/blogs/#{@article.id}/update", method: :put) do %> <!-- submitしたらpostでとばすよ -->
+
+    <p>Title</p>
+    <input type="text" name="title" value=<%= @article.title %>> <!-- タイトル入力 -->
+
+    <p>Image URL</p>
+    <% unless @article.image=="" %>
+        <input type="text" name="image" value=<%= @article.image %>> <!-- 画像URL -->
+    <% else %>
+        <input type="text" name="image" placeholder="Image URL"> <!-- 画像URL -->
+    <% end %>
+    
+    <p>Contents</p>
+    <textarea type="text" name="content" placeholder="Write here" rows="10" cols="50"><%= @article.content %></textarea> <!-- 本文 -->
+    
+    <input type="submit" value="Post"> <!-- 投稿ボタン -->
+    
+<% end %>
