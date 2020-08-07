@@ -1,9 +1,13 @@
 class BlogsController < ApplicationController
 
-  before_action :logged_in_user, except: :index # 未ログイン時はindexを除いてアクセスできない
+  before_action :logged_in_user, except: [:index, :status] # 未ログイン時はindexを除いてアクセスできない
 
   def index
     @articles = Article.all.order("id DESC") # 記事取得
+  end
+
+  def status
+    @article = Article.find_by(id: params[:id]) # 同じidの記事を探して代入
   end
     
   def new
