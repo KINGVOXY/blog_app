@@ -18,19 +18,24 @@
         <li>
             <%= article.title %> <!-- タイトル -->
 
-            <p><%= time_ago_in_words(article.created_at) %> ago</p> <!-- どれくらい前に更新されたか -->
+            <p><%= time_ago_in_words(article.updated_at) %> ago</p> <!-- どれくらい前に更新されたか -->
 
             <% unless article.image == "" %> <!-- 画像リンクがあるとき -->
                 <img src="<%= article.image %>"> <!-- 画像 -->
             <% end %>
 
             <p><%= article.content %></p> <!-- 本文 -->
-
-            <p><%= article.created_at.strftime("%Y-%m-%d %H:%M JST") %></p> <!-- 更新日時 -->
+            <% if article.updated_at != article.created_at %>
+                <p><%= article.updated_at.strftime("%Y年%m月%d日 %H時%M分 更新") %></p> <!-- 更新したとき、その日時も表示 -->
+            <% end %>
+            <p><%= article.created_at.strftime("%Y年%m月%d日 %H時%M分 作成") %></p> <!-- 作成日時 -->
         </li>
             <% if logged_in? %> <!-- ログイン済みの時 -->
                 <%= link_to("/blogs/#{article.id}/destroy",{method:"delete"}) do %>
                     <input type="submit" value="delete"> <!-- 記事削除 -->
+                <% end %>
+                <%= link_to("/blogs/#{article.id}/edit",{method:"get"}) do %>
+                    <input type="submit" value="edit"> <!-- 記事削除 -->
                 <% end %>
             <% end %>
 
